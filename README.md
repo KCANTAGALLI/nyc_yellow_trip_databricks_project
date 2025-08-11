@@ -127,7 +127,7 @@ nyc_yellow_trip_databricks_project/
 
 ### Quick Start
 
-**📋 Para execução detalhada, consulte: [`GUIA_EXECUCAO.md`](GUIA_EXECUCAO.md) ou [`EXECUCAO_RAPIDA.md`](EXECUCAO_RAPIDA.md)**
+**Para execução detalhada, consulte: [`GUIA_EXECUCAO.md`](GUIA_EXECUCAO.md) ou [`EXECUCAO_RAPIDA.md`](EXECUCAO_RAPIDA.md)**
 
 Execute notebooks in sequence:
 
@@ -151,7 +151,7 @@ Execute notebooks in sequence:
 run_monthly_pipeline(2023, 1)  # Process January 2023
 ```
 
-**⏱️ Tempo total estimado: 35-75 minutos**
+**Tempo total estimado: 35-75 minutos**
 
 ## Data Layers
 

@@ -34,7 +34,7 @@ try:
     from pyspark.sql.types import *
     SPARK_AVAILABLE = True
 except ImportError:
-    print("⚠️  PySpark não disponível. Executando testes básicos...")
+    print("AVISO: PySpark não disponível. Executando testes básicos...")
     SPARK_AVAILABLE = False
 
 # Importar funções auxiliares se disponível
@@ -54,7 +54,7 @@ try:
     )
     HELPERS_AVAILABLE = True
 except ImportError:
-    print("⚠️  Módulo helpers não disponível. Testes limitados...")
+    print("AVISO: Módulo helpers não disponível. Testes limitados...")
     HELPERS_AVAILABLE = False
 
 # ====================================
@@ -139,7 +139,7 @@ class PipelineTestResult:
     def start(self):
         self.start_time = datetime.now()
         self.status = "running"
-        logger.info(f"🚀 Iniciando teste: {self.pipeline_name} - {self.stage}")
+        logger.info(f"Iniciando teste: {self.pipeline_name} - {self.stage}")
         
     def finish(self, status: str = "passed", details: Dict = None):
         self.end_time = datetime.now()
@@ -148,17 +148,17 @@ class PipelineTestResult:
         if details:
             self.details.update(details)
         
-        status_emoji = "✅" if status == "passed" else "❌" if status == "failed" else "⚠️"
-        logger.info(f"{status_emoji} Finalizado: {self.pipeline_name} - {self.stage} ({self.duration:.2f}s)")
+        status_symbol = "[PASS]" if status == "passed" else "[FAIL]" if status == "failed" else "[WARN]"
+        logger.info(f"{status_symbol} Finalizado: {self.pipeline_name} - {self.stage} ({self.duration:.2f}s)")
             
     def add_error(self, error: str):
         self.errors.append(error)
         self.status = "failed"
-        logger.error(f"❌ Erro em {self.pipeline_name}: {error}")
+        logger.error(f"ERRO em {self.pipeline_name}: {error}")
         
     def add_warning(self, warning: str):
         self.warnings.append(warning)
-        logger.warning(f"⚠️  Aviso em {self.pipeline_name}: {warning}")
+        logger.warning(f"AVISO em {self.pipeline_name}: {warning}")
         
     def add_metrics(self, metrics: Dict):
         self.metrics.update(metrics)
@@ -229,11 +229,11 @@ class PipelineTestSuite:
                     .config("spark.sql.warehouse.dir", "/tmp/spark-warehouse-test") \
                     .getOrCreate()
             
-            logger.info("✅ Sessão Spark inicializada com sucesso")
+            logger.info("Sessão Spark inicializada com sucesso")
             return True
             
         except Exception as e:
-            logger.error(f"❌ Erro ao inicializar Spark: {str(e)}")
+            logger.error(f"Erro ao inicializar Spark: {str(e)}")
             return False
     
     def create_sample_data(self) -> bool:
@@ -243,7 +243,7 @@ class PipelineTestSuite:
             return False
             
         try:
-            logger.info("📊 Criando dados de amostra para testes...")
+            logger.info(" Criando dados de amostra para testes...")
             
             # Gerar dados sintéticos realistas
             sample_size = self.config.get("sample_data_size", 1000)
@@ -349,11 +349,11 @@ class PipelineTestSuite:
             # Salvar como tabela temporária
             self.sample_data.createOrReplaceTempView("raw_taxi_data")
             
-            logger.info(f"✅ Dados de amostra criados: {sample_size} registros")
+            logger.info(f"Dados de amostra criados: {sample_size} registros")
             return True
             
         except Exception as e:
-            logger.error(f"❌ Erro ao criar dados de amostra: {str(e)}")
+            logger.error(f"Erro ao criar dados de amostra: {str(e)}")
             return False
     
     def test_notebook_syntax(self, notebook_path: str) -> Tuple[bool, List[str], List[str]]:
@@ -605,7 +605,7 @@ class PipelineTestSuite:
         
         # Executar testes para cada pipeline
         for stage_name, stage_config in PIPELINE_STAGES.items():
-            logger.info(f"\n📋 Testando pipeline: {stage_name.upper()}")
+            logger.info(f"\n Testando pipeline: {stage_name.upper()}")
             logger.info("-" * 40)
             
             result = self.simulate_pipeline_execution(stage_name, stage_config)
@@ -663,8 +663,8 @@ RESULTADOS POR PIPELINE:
 """
         
         for result in self.results:
-            status_emoji = "✅" if result.status == "passed" else "❌" if result.status == "failed" else "⚠️"
-            summary_text += f"\n{status_emoji} {result.pipeline_name.upper()} - {result.stage}:\n"
+            status_symbol = "[PASS]" if result.status == "passed" else "[FAIL]" if result.status == "failed" else "[WARN]"
+            summary_text += f"\n{status_symbol} {result.pipeline_name.upper()} - {result.stage}:\n"
             summary_text += f"  - Status: {result.status}\n"
             summary_text += f"  - Duração: {result.duration:.2f}s\n"
             
@@ -701,7 +701,7 @@ RESULTADOS POR PIPELINE:
         with open(summary_file, 'w', encoding='utf-8') as f:
             f.write(summary_text)
             
-        logger.info(f"📊 Relatórios salvos em: {reports_dir}/")
+        logger.info(f" Relatórios salvos em: {reports_dir}/")
         logger.info(f"- Detalhado: {detailed_file}")
         logger.info(f"- Resumo: {summary_file}")
         logger.info(f"- Log: {log_filename}")
@@ -726,7 +726,7 @@ def main():
             missing_notebooks.append(config["notebook"])
     
     if missing_notebooks:
-        print("❌ ERRO: Notebooks não encontrados:")
+        print("ERRO: Notebooks não encontrados:")
         for notebook in missing_notebooks:
             print(f"  - {notebook}")
         print()
@@ -748,20 +748,20 @@ def main():
         
         print()
         print("=" * 70)
-        print("📊 RESUMO DOS TESTES DOS PIPELINES")
+        print(" RESUMO DOS TESTES DOS PIPELINES")
         print("=" * 70)
         print(f"Total de pipelines testados: {summary['total_pipelines_tested']}")
-        print(f"✅ Aprovados: {summary['passed']}")
-        print(f"❌ Falharam: {summary['failed']}")
-        print(f"⚠️  Avisos: {summary['warnings']}")
-        print(f"📈 Taxa de sucesso: {summary['success_rate']:.1f}%")
-        print(f"⏱️  Duração total: {summary['total_duration']:.2f} segundos")
+        print(f"Aprovados: {summary['passed']}")
+        print(f"Falharam: {summary['failed']}")
+        print(f"Avisos: {summary['warnings']}")
+        print(f"Taxa de sucesso: {summary['success_rate']:.1f}%")
+        print(f"Duração total: {summary['total_duration']:.2f} segundos")
         print()
         
         # Exibir detalhes dos pipelines que falharam
         failed_pipelines = [r for r in suite.results if r.status == "failed"]
         if failed_pipelines:
-            print("❌ PIPELINES QUE FALHARAM:")
+            print("PIPELINES QUE FALHARAM:")
             print("-" * 35)
             for pipeline in failed_pipelines:
                 print(f"• {pipeline.pipeline_name} - {pipeline.stage}")
@@ -771,16 +771,16 @@ def main():
         
         # Status final
         if summary['success_rate'] >= 90:
-            print("🎉 TODOS OS PIPELINES ESTÃO FUNCIONANDO PERFEITAMENTE!")
+            print(" TODOS OS PIPELINES ESTÃO FUNCIONANDO PERFEITAMENTE!")
             exit_code = 0
         elif summary['success_rate'] >= 70:
             print("👍 PIPELINES EM BOM ESTADO COM ALGUMAS MELHORIAS NECESSÁRIAS")
             exit_code = 0
         elif summary['success_rate'] >= 50:
-            print("⚠️  PIPELINES PRECISAM DE ATENÇÃO - VÁRIAS MELHORIAS NECESSÁRIAS")
+            print("PIPELINES PRECISAM DE ATENÇÃO - VÁRIAS MELHORIAS NECESSÁRIAS")
             exit_code = 1
         else:
-            print("🚨 PIPELINES EM ESTADO CRÍTICO - REQUER CORREÇÕES URGENTES")
+            print(" PIPELINES EM ESTADO CRÍTICO - REQUER CORREÇÕES URGENTES")
             exit_code = 2
         
         print()
@@ -797,7 +797,7 @@ def main():
     except Exception as e:
         logger.error(f"Erro crítico na execução dos testes: {str(e)}")
         logger.error(traceback.format_exc())
-        print(f"\n🚨 ERRO CRÍTICO: {str(e)}")
+        print(f"\n ERRO CRÍTICO: {str(e)}")
         return 1
     
     finally:

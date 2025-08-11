@@ -217,7 +217,7 @@ date_range = bronze_df.agg(
     max("tpep_pickup_datetime").alias("max_date")
 ).collect()[0]
 
-print(f"\n📆 Período dos dados:")
+print(f"\nPeríodo dos dados:")
 print(f"   Início: {date_range['min_date']}")
 print(f"   Fim: {date_range['max_date']}")
 
@@ -307,7 +307,7 @@ print("=" * 35)
 spark.sql(f"DESCRIBE EXTENDED {BRONZE_TABLE}").show(50, truncate=False)
 
 # Histórico da tabela Delta
-print("\n📚 Histórico da tabela Delta:")
+print("\nHistórico da tabela Delta:")
 spark.sql(f"DESCRIBE HISTORY {BRONZE_TABLE}").show(10, truncate=False)
 
 # COMMAND ----------

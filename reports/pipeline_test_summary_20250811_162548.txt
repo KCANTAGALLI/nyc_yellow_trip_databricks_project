@@ -1,0 +1,37 @@
+
+NYC Yellow Trip Project - Relatório de Testes dos Pipelines
+==========================================================
+
+Data/Hora: 2025-08-11 16:25:48
+Duração Total: 0.01 segundos
+
+RESUMO DOS PIPELINES:
+- Total de pipelines testados: 3
+- Pipelines aprovados: 3
+- Pipelines com falhas: 0
+- Avisos: 3
+- Taxa de sucesso: 100.0%
+
+RESULTADOS POR PIPELINE:
+
+[PASS] BRONZE - Ingestão de dados brutos (Bronze Layer):
+  - Status: passed
+  - Duração: 0.00s
+  - Avisos:
+    • Spark não disponível - simulação limitada
+
+[PASS] SILVER - Tratamento e limpeza (Silver Layer):
+  - Status: passed
+  - Duração: 0.00s
+  - Avisos:
+    • Spark não disponível - simulação limitada
+
+[PASS] GOLD - Análises e agregações (Gold Layer):
+  - Status: passed
+  - Duração: 0.00s
+  - Avisos:
+    • Spark não disponível - simulação limitada
+
+Arquivos de log salvos em: reports/
+Log detalhado: reports/pipeline_test_20250811_162548.log
+Relatório gerado em: 2025-08-11 16:25:48

@@ -325,7 +325,7 @@ print(f"Tabela criada: {GOLD_TABLES['vendor_performance']}")
 
 # COMMAND ----------
 
-print("💳 Analisando métodos de pagamento...")
+print("Analisando métodos de pagamento...")
 
 # Análise detalhada por tipo de pagamento
 payment_analysis = silver_df.groupBy(
@@ -446,7 +446,7 @@ print(f"Tabela criada: {GOLD_TABLES['route_analysis']}")
 
 # COMMAND ----------
 
-print("💼 Criando resumo financeiro executivo...")
+print("Criando resumo financeiro executivo...")
 
 # Resumo financeiro por mês para executivos
 financial_summary = silver_df.groupBy(
@@ -565,7 +565,7 @@ overall_kpis = silver_df.agg(
     countDistinct("DOLocationID").alias("unique_dropoff_locations")
 ).collect()[0]
 
-print("🏆 KPIs GERAIS (Jan-Abr 2023):")
+print("KPIs GERAIS (Jan-Abr 2023):")
 print(f"   Total de viagens: {overall_kpis['total_trips']:,}")
 print(f"   Receita total: ${overall_kpis['total_revenue']:,.2f}")
 print(f"   Distância total: {overall_kpis['total_distance']:,.0f} milhas")

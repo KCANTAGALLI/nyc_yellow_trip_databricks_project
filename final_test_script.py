@@ -32,7 +32,7 @@ try:
     from pyspark.sql.types import *
     SPARK_AVAILABLE = True
 except ImportError:
-    print("⚠️  PySpark não disponível. Executando testes básicos...")
+    print("AVISO: PySpark não disponível. Executando testes básicos...")
     SPARK_AVAILABLE = False
 
 # Importar funções auxiliares se disponível
@@ -52,7 +52,7 @@ try:
     )
     HELPERS_AVAILABLE = True
 except ImportError:
-    print("⚠️  Módulo helpers não disponível. Testes limitados...")
+    print("AVISO: Módulo helpers não disponível. Testes limitados...")
     HELPERS_AVAILABLE = False
 
 # ====================================
@@ -264,7 +264,7 @@ def test_project_structure(suite: TestSuite):
     result.start()
     
     try:
-        logger.info("🔍 Testando estrutura do projeto...")
+        logger.info(" Testando estrutura do projeto...")
         
         # Verificar notebooks
         notebooks_dir = "notebooks"
@@ -401,7 +401,7 @@ def test_helpers_module(suite: TestSuite):
     result.start()
     
     try:
-        logger.info("🛠️  Testando módulo helpers...")
+        logger.info("Testando módulo helpers...")
         
         if not HELPERS_AVAILABLE:
             result.add_error("Módulo helpers não disponível para teste")
@@ -473,7 +473,7 @@ def test_spark_functionality(suite: TestSuite):
     result.start()
     
     try:
-        logger.info("⚡ Testando funcionalidades do Spark...")
+        logger.info(" Testando funcionalidades do Spark...")
         
         if not SPARK_AVAILABLE:
             result.add_error("PySpark não disponível para teste")
@@ -537,7 +537,7 @@ def test_data_processing_pipeline(suite: TestSuite):
     result.start()
     
     try:
-        logger.info("🔄 Testando pipeline de processamento...")
+        logger.info(" Testando pipeline de processamento...")
         
         if not SPARK_AVAILABLE or not HELPERS_AVAILABLE or not suite.spark:
             result.add_error("Spark ou helpers não disponíveis para teste de pipeline")
@@ -757,7 +757,7 @@ def test_documentation(suite: TestSuite):
     result.start()
     
     try:
-        logger.info("📚 Testando documentação...")
+        logger.info(" Testando documentação...")
         
         doc_results = {}
         
@@ -880,20 +880,20 @@ def main():
         
         print()
         print("=" * 60)
-        print("📊 RESUMO DOS TESTES")
+        print(" RESUMO DOS TESTES")
         print("=" * 60)
         print(f"Total de testes: {summary['total_tests']}")
-        print(f"✅ Aprovados: {summary['passed']}")
-        print(f"❌ Falharam: {summary['failed']}")
-        print(f"⚠️  Avisos: {summary['warnings']}")
-        print(f"📈 Taxa de sucesso: {summary['success_rate']:.1f}%")
-        print(f"⏱️  Duração total: {summary['total_duration']:.2f} segundos")
+        print(f"Aprovados: {summary['passed']}")
+        print(f"Falharam: {summary['failed']}")
+        print(f"Avisos: {summary['warnings']}")
+        print(f"Taxa de sucesso: {summary['success_rate']:.1f}%")
+        print(f"Duração total: {summary['total_duration']:.2f} segundos")
         print()
         
         # Exibir detalhes dos testes que falharam
         failed_tests = [r for r in suite.results if r.status == "failed"]
         if failed_tests:
-            print("❌ TESTES QUE FALHARAM:")
+            print("TESTES QUE FALHARAM:")
             print("-" * 30)
             for test in failed_tests:
                 print(f"• {test.name} ({test.category})")
@@ -907,7 +907,7 @@ def main():
             all_warnings.extend(result.warnings)
         
         if all_warnings:
-            print("⚠️  AVISOS IMPORTANTES:")
+            print("AVISOS IMPORTANTES:")
             print("-" * 25)
             for warning in all_warnings[:10]:  # Mostrar apenas os primeiros 10
                 print(f"• {warning}")
@@ -917,16 +917,16 @@ def main():
         
         # Status final
         if summary['success_rate'] >= 90:
-            print("🎉 PROJETO EM EXCELENTE ESTADO!")
+            print(" PROJETO EM EXCELENTE ESTADO!")
             exit_code = 0
         elif summary['success_rate'] >= 70:
             print("👍 PROJETO EM BOM ESTADO COM ALGUMAS MELHORIAS NECESSÁRIAS")
             exit_code = 0
         elif summary['success_rate'] >= 50:
-            print("⚠️  PROJETO PRECISA DE ATENÇÃO - VÁRIAS MELHORIAS NECESSÁRIAS")
+            print("PROJETO PRECISA DE ATENÇÃO - VÁRIAS MELHORIAS NECESSÁRIAS")
             exit_code = 1
         else:
-            print("🚨 PROJETO EM ESTADO CRÍTICO - REQUER CORREÇÕES URGENTES")
+            print(" PROJETO EM ESTADO CRÍTICO - REQUER CORREÇÕES URGENTES")
             exit_code = 2
         
         print()
@@ -943,7 +943,7 @@ def main():
     except Exception as e:
         logger.error(f"Erro crítico na execução dos testes: {str(e)}")
         logger.error(traceback.format_exc())
-        print(f"\n🚨 ERRO CRÍTICO: {str(e)}")
+        print(f"\n ERRO CRÍTICO: {str(e)}")
         return 1
 
 if __name__ == "__main__":
