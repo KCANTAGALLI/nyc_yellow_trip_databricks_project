@@ -232,7 +232,7 @@ python simple_final_test.py
 
 ---
 
-## 📞 Suporte
+##  Suporte
 
 ### Arquivos de Referência
 - `README.md` - Documentação principal do projeto
