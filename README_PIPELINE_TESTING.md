@@ -294,7 +294,7 @@ Total de pipelines testados: 3
 
 ---
 
-## 📞 Suporte e Contribuição
+## Suporte e Contribuição
 
 Para dúvidas, melhorias ou relatos de bugs:
 -  Abrir issue no repositório

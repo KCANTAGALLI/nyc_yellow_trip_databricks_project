@@ -914,16 +914,16 @@ def main():
         
         # Status final
         if summary['success_rate'] >= 90:
-            print(" PROJETO EM EXCELENTE ESTADO!")
+            print("PROJECT STATUS: EXCELLENT")
             exit_code = 0
         elif summary['success_rate'] >= 70:
             print("PROJECT IN GOOD STATE - SOME IMPROVEMENTS NEEDED")
             exit_code = 0
         elif summary['success_rate'] >= 50:
-            print("PROJETO PRECISA DE ATENÇÃO - VÁRIAS MELHORIAS NECESSÁRIAS")
+            print("PROJECT NEEDS ATTENTION - MULTIPLE IMPROVEMENTS REQUIRED")
             exit_code = 1
         else:
-            print(" PROJETO EM ESTADO CRÍTICO - REQUER CORREÇÕES URGENTES")
+            print("PROJECT STATUS: CRITICAL - REQUIRES URGENT FIXES")
             exit_code = 2
         
         print()
@@ -940,7 +940,7 @@ def main():
     except Exception as e:
         logger.error(f"Erro crítico na execução dos testes: {str(e)}")
         logger.error(traceback.format_exc())
-        print(f"\n ERRO CRÍTICO: {str(e)}")
+        print(f"\nCRITICAL ERROR: {str(e)}")
         return 1
 
 if __name__ == "__main__":

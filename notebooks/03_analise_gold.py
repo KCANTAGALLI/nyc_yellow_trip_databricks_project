@@ -839,6 +839,6 @@ print("   • Índices implícitos do Delta Lake")
 
 # COMMAND ----------
 
-print("ANÁLISE GOLD CONCLUÍDA COM SUCESSO!")
+print("GOLD ANALYSIS COMPLETED SUCCESSFULLY")
 print("Próximo passo: Execute o notebook 04_automatizacao.py")
 print("As tabelas Gold estão prontas para consumo em dashboards e relatórios!")

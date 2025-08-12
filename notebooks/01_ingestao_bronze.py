@@ -339,5 +339,5 @@ spark.sql(f"DESCRIBE HISTORY {BRONZE_TABLE}").show(10, truncate=False)
 
 # COMMAND ----------
 
-print("INGESTÃO BRONZE CONCLUÍDA COM SUCESSO!")
+print("BRONZE INGESTION COMPLETED SUCCESSFULLY")
 print("Próximo passo: Execute o notebook 02_tratamento_silver.py")

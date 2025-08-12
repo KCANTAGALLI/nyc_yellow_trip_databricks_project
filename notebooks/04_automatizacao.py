@@ -968,7 +968,7 @@ print("   • check_data - Verificação de disponibilidade")
 print("   • quality_check - Análise de qualidade")
 print("   • setup_monitoring - Configuração de monitoramento")
 
-print(f"\n🔔 Recursos de alertas:")
+print(f"\nRecursos de alertas:")
 print("   • Notificações por email em falhas")
 print("   • Dashboard de monitoramento em tempo real")
 print("   • Métricas de SLA e qualidade")
@@ -1024,7 +1024,7 @@ print(f"   Timeout: {workflow_config['timeout_seconds']/3600}h")
 
 # COMMAND ----------
 
-print("AUTOMAÇÃO IMPLEMENTADA COM SUCESSO!")
+print("AUTOMATION IMPLEMENTED SUCCESSFULLY")
 print("O pipeline está pronto para execução automática")
 print("Configure os Workflows no Databricks para agendamento")
 print("Implemente as notificações conforme necessário")

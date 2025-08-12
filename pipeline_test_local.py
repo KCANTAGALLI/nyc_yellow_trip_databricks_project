@@ -769,16 +769,16 @@ def main():
         
         # Status final
         if summary['success_rate'] >= 90:
-            print(" TODOS OS PIPELINES ESTÃO FUNCIONANDO PERFEITAMENTE!")
+            print("ALL PIPELINES OPERATING PERFECTLY")
             exit_code = 0
         elif summary['success_rate'] >= 70:
             print("PIPELINES IN GOOD STATE - SOME IMPROVEMENTS NEEDED")
             exit_code = 0
         elif summary['success_rate'] >= 50:
-            print("PIPELINES PRECISAM DE ATENÇÃO - VÁRIAS MELHORIAS NECESSÁRIAS")
+            print("PIPELINES NEED ATTENTION - MULTIPLE IMPROVEMENTS REQUIRED")
             exit_code = 1
         else:
-            print(" PIPELINES EM ESTADO CRÍTICO - REQUER CORREÇÕES URGENTES")
+            print("PIPELINES STATUS: CRITICAL - REQUIRES URGENT FIXES")
             exit_code = 2
         
         print()
@@ -795,7 +795,7 @@ def main():
     except Exception as e:
         logger.error(f"Erro crítico na execução dos testes: {str(e)}")
         logger.error(traceback.format_exc())
-        print(f"\n ERRO CRÍTICO: {str(e)}")
+        print(f"\nCRITICAL ERROR: {str(e)}")
         return 1
     
     finally:

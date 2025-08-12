@@ -584,5 +584,5 @@ print(f"   Registros removidos: {bronze_count - silver_count:,}")
 
 # COMMAND ----------
 
-print("PROCESSAMENTO SILVER CONCLUÍDO COM SUCESSO!")
+print("SILVER PROCESSING COMPLETED SUCCESSFULLY")
 print("Próximo passo: Execute o notebook 03_analise_gold.py")
