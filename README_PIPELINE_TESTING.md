@@ -211,7 +211,7 @@ PIPELINE_TEST_CONFIG = {
 
 ### Exemplo de Execução Recente
 ```
-🧪 NYC YELLOW TRIP PROJECT - TESTE DOS PIPELINES LOCAL
+NYC YELLOW TRIP PROJECT - LOCAL PIPELINE TESTING
 ======================================================
 
  Testando pipeline: BRONZE

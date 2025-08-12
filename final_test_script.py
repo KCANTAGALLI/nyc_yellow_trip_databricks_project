@@ -334,7 +334,7 @@ def test_dependencies(suite: TestSuite):
     result.start()
     
     try:
-        logger.info("📦 Testando dependências...")
+        logger.info("Testing dependencies...")
         
         dependencies_status = {}
         
@@ -653,7 +653,7 @@ def test_notebooks_syntax(suite: TestSuite):
     result.start()
     
     try:
-        logger.info("📔 Testando sintaxe dos notebooks...")
+        logger.info("Testing notebook syntax...")
         
         notebooks_dir = "notebooks"
         if not os.path.exists(notebooks_dir):
@@ -829,7 +829,7 @@ def main():
     """Função principal para execução dos testes"""
     
     print("=" * 60)
-    print("🧪 NYC YELLOW TRIP PROJECT - TESTE FINAL")
+    print("NYC YELLOW TRIP PROJECT - COMPREHENSIVE TEST SUITE")
     print("=" * 60)
     print(f"Iniciado em: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
     print()
@@ -934,7 +934,7 @@ def main():
         return exit_code
         
     except KeyboardInterrupt:
-        print("\n🛑 Teste interrompido pelo usuário")
+        print("\nTest interrupted by user")
         return 130
         
     except Exception as e:

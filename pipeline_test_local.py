@@ -210,7 +210,7 @@ class PipelineTestSuite:
     def initialize_spark(self) -> bool:
         """Inicializa sessão Spark local para testes"""
         if not SPARK_AVAILABLE:
-            logger.warning("PySpark não disponível - alguns testes serão limitados")
+            logger.warning("PySpark not available - limited testing mode")
             return False
             
         try:
@@ -237,11 +237,11 @@ class PipelineTestSuite:
     def create_sample_data(self) -> bool:
         """Cria dados de amostra para testes"""
         if not self.spark:
-            logger.warning("Spark não disponível - não é possível criar dados de amostra")
+            logger.warning("Spark not available - cannot create sample data")
             return False
             
         try:
-            logger.info(" Criando dados de amostra para testes...")
+            logger.info("Creating sample data for testing...")
             
             # Gerar dados sintéticos realistas
             sample_size = self.config.get("sample_data_size", 1000)
@@ -588,7 +588,7 @@ class PipelineTestSuite:
     
     def run_all_tests(self):
         """Executa todos os testes de pipeline"""
-        logger.info("🧪 Iniciando testes dos pipelines localmente...")
+        logger.info("Iniciando testes dos pipelines localmente...")
         logger.info("=" * 60)
         
         # Inicializar Spark
@@ -613,7 +613,7 @@ class PipelineTestSuite:
         if self.spark:
             try:
                 self.spark.stop()
-                logger.info("🛑 Sessão Spark finalizada")
+                logger.info("Sessão Spark finalizada")
             except Exception as e:
                 logger.warning(f"Aviso ao finalizar Spark: {str(e)}")
     
@@ -712,7 +712,7 @@ def main():
     """Função principal para execução dos testes de pipeline"""
     
     print("=" * 70)
-    print("🧪 NYC YELLOW TRIP PROJECT - TESTE DOS PIPELINES LOCAL")
+    print("NYC YELLOW TRIP PROJECT - LOCAL PIPELINE TESTING FRAMEWORK")
     print("=" * 70)
     print(f"Iniciado em: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
     print()
@@ -789,7 +789,7 @@ def main():
         return exit_code
         
     except KeyboardInterrupt:
-        print("\n🛑 Teste interrompido pelo usuário")
+        print("\n Teste interrompido pelo usuário")
         return 130
         
     except Exception as e:

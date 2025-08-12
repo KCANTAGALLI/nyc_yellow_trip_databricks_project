@@ -51,7 +51,7 @@ nyc_yellow_trip_databricks_project/
 │   ├── docs/inferencias.md             # Análises de negócio
 │   └── RESUMO_IMPLEMENTACAO.md         # Este arquivo
 └── 
-└── 🧪 Arquivos de Teste e Debug
+└── Arquivos de Teste e Debug
     ├── test_final_script.py            # Script de teste
     ├── test_final.bat                  # Batch para teste
     └── [outros arquivos de debug]
