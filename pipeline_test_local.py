@@ -772,7 +772,7 @@ def main():
             print(" TODOS OS PIPELINES ESTÃO FUNCIONANDO PERFEITAMENTE!")
             exit_code = 0
         elif summary['success_rate'] >= 70:
-            print("👍 PIPELINES EM BOM ESTADO COM ALGUMAS MELHORIAS NECESSÁRIAS")
+            print("PIPELINES IN GOOD STATE - SOME IMPROVEMENTS NEEDED")
             exit_code = 0
         elif summary['success_rate'] >= 50:
             print("PIPELINES PRECISAM DE ATENÇÃO - VÁRIAS MELHORIAS NECESSÁRIAS")

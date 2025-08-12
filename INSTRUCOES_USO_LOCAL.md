@@ -144,7 +144,7 @@ python run_complete_tests.py
 - Análise financeira (receita, gorjetas)
 - Padrões geográficos e de comportamento
 
-### 🤖 Automação
+### Automação
 - Pipeline orquestrado
 - Processamento incremental
 - Monitoramento de qualidade

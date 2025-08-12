@@ -917,7 +917,7 @@ def main():
             print(" PROJETO EM EXCELENTE ESTADO!")
             exit_code = 0
         elif summary['success_rate'] >= 70:
-            print("👍 PROJETO EM BOM ESTADO COM ALGUMAS MELHORIAS NECESSÁRIAS")
+            print("PROJECT IN GOOD STATE - SOME IMPROVEMENTS NEEDED")
             exit_code = 0
         elif summary['success_rate'] >= 50:
             print("PROJETO PRECISA DE ATENÇÃO - VÁRIAS MELHORIAS NECESSÁRIAS")
