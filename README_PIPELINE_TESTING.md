@@ -301,4 +301,4 @@ Para dúvidas, melhorias ou relatos de bugs:
 -  Consultar logs detalhados em `reports/`
 -  Verificar documentação técnica nos notebooks
 
-**Data Engineering Team** - 2025
+2025

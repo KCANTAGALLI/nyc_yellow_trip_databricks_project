@@ -34,7 +34,7 @@ nyc_yellow_trip_databricks_project/
 │   ├── final_test_script.py             # Script final ATUALIZADO
 │   ├── test_dependencies.py             # Teste de dependências
 │   ├── local_test_runner.py             # Teste local original
-│   └── simple_final_test.py             # Teste simplificado (debug)
+│   └── simple_final_test.py             # Teste simplificado
 ├── 
 ├── Notebooks Databricks (Originais)
 │   ├── 01_ingestao_bronze.py
@@ -252,5 +252,5 @@ python simple_final_test.py
 
 ---
 
-*Gerado automaticamente em 07/08/2025*  
+*Última atualização: 07/08/2025*  
 *Versão 2.0 - Organização de Relatórios Implementada*

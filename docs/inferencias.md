@@ -378,7 +378,6 @@ Sustentabilidade: Eficiência energética estimada
 
 ---
 
-**Documento preparado por**: Data Engineering Team  
 **Data**: Janeiro 2025  
 **Versão**: 1.0  
 **Status**: Aprovado para implementação

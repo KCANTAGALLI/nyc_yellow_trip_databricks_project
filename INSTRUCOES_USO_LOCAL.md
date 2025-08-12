@@ -226,6 +226,6 @@ Após executar os testes, são gerados automaticamente:
 
 ---
 
-**Gerado automaticamente em**: 07/08/2025 19:12:38  
+**Última atualização**: 07/08/2025  
 **Versão dos testes**: 1.0  
 **Status**: - APROVADO PARA USO

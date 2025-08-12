@@ -1,17 +1,15 @@
 #!/usr/bin/env python3
 """
-NYC Yellow Trip Records - Pipeline Test Script Local
-===================================================
+NYC Yellow Trip Records - Local Pipeline Testing Framework
+=========================================================
 
-Script específico para testar os pipelines localmente com execução
-simulada dos notebooks e logging detalhado.
+Advanced testing framework for local validation of data pipelines.
+Simulates notebook execution and provides comprehensive logging.
 
-Executa testes dos pipelines Bronze, Silver e Gold de forma local
-e gera relatórios detalhados salvos na pasta reports/.
+Executes Bronze, Silver, and Gold pipeline tests locally with
+detailed reporting and quality metrics.
 
-Autor: Data Engineering Team
-Versão: 1.0
-Data: 2025
+Version: 1.0
 """
 
 import os
@@ -34,7 +32,7 @@ try:
     from pyspark.sql.types import *
     SPARK_AVAILABLE = True
 except ImportError:
-    print("AVISO: PySpark não disponível. Executando testes básicos...")
+    print("WARNING: PySpark not available. Running basic tests...")
     SPARK_AVAILABLE = False
 
 # Importar funções auxiliares se disponível
@@ -54,7 +52,7 @@ try:
     )
     HELPERS_AVAILABLE = True
 except ImportError:
-    print("AVISO: Módulo helpers não disponível. Testes limitados...")
+    print("WARNING: Helpers module not available. Limited testing...")
     HELPERS_AVAILABLE = False
 
 # ====================================
@@ -748,7 +746,7 @@ def main():
         
         print()
         print("=" * 70)
-        print(" RESUMO DOS TESTES DOS PIPELINES")
+        print("PIPELINE TEST EXECUTION SUMMARY")
         print("=" * 70)
         print(f"Total de pipelines testados: {summary['total_pipelines_tested']}")
         print(f"Aprovados: {summary['passed']}")

@@ -1,13 +1,12 @@
 """
-NYC Yellow Trip Records - Funções Auxiliares
-============================================
+NYC Yellow Trip Records - Utility Functions
+===========================================
 
-Módulo com funções utilitárias reutilizáveis para o pipeline de dados
-dos registros de táxi amarelo de NYC.
+Production-ready utility functions for the NYC Yellow Trip data pipeline.
+Provides data validation, quality metrics, and processing functions
+for Bronze, Silver, and Gold layers.
 
-Autor: Data Engineering Team
-Versão: 1.0
-Data: 2025
+Version: 1.0
 """
 
 from pyspark.sql import SparkSession, DataFrame

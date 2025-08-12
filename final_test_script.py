@@ -1,17 +1,14 @@
 #!/usr/bin/env python3
 """
-NYC Yellow Trip Records - Script Final de Teste
-==============================================
+NYC Yellow Trip Records - Comprehensive Test Suite
+=================================================
 
-Script para testar todos os componentes do pipeline de dados
-dos registros de táxi amarelo de NYC.
+Production-ready test suite for the NYC Yellow Trip data pipeline.
+Validates Bronze, Silver, and Gold layers with detailed reporting.
 
-Executa testes das camadas Bronze, Silver e Gold e gera relatórios
-detalhados salvos na pasta reports/.
+Generates comprehensive reports saved to the reports/ directory.
 
-Autor: Data Engineering Team
-Versão: 1.0
-Data: 2025
+Version: 1.0
 """
 
 import os
@@ -32,7 +29,7 @@ try:
     from pyspark.sql.types import *
     SPARK_AVAILABLE = True
 except ImportError:
-    print("AVISO: PySpark não disponível. Executando testes básicos...")
+    print("WARNING: PySpark not available. Running basic tests...")
     SPARK_AVAILABLE = False
 
 # Importar funções auxiliares se disponível
@@ -52,7 +49,7 @@ try:
     )
     HELPERS_AVAILABLE = True
 except ImportError:
-    print("AVISO: Módulo helpers não disponível. Testes limitados...")
+    print("WARNING: Helpers module not available. Limited testing...")
     HELPERS_AVAILABLE = False
 
 # ====================================
@@ -568,7 +565,7 @@ def test_data_processing_pipeline(suite: TestSuite):
         original_count = sample_df.count()
         result.details["original_records"] = original_count
         
-        # Teste 1: Validação de schema
+        # Schema validation
         try:
             is_valid, issues = validate_dataframe_schema(sample_df)
             result.details["schema_validation"] = {
@@ -578,7 +575,7 @@ def test_data_processing_pipeline(suite: TestSuite):
         except Exception as e:
             result.add_warning(f"Erro na validação de schema: {str(e)}")
         
-        # Teste 2: Adicionar features temporais
+        # Temporal feature enrichment
         try:
             df_with_temporal = add_temporal_features(sample_df)
             temporal_columns = [col for col in df_with_temporal.columns if col.startswith("pickup_") or col in ["time_period", "is_weekend"]]
@@ -590,7 +587,7 @@ def test_data_processing_pipeline(suite: TestSuite):
             result.add_error(f"Erro ao adicionar features temporais: {str(e)}")
             df_with_temporal = sample_df
         
-        # Teste 3: Adicionar métricas de viagem
+        # Trip metrics calculation
         try:
             df_with_metrics = add_trip_metrics(df_with_temporal)
             metric_columns = [col for col in df_with_metrics.columns if col in ["trip_duration_minutes", "avg_speed_mph", "tip_percentage", "cost_per_mile"]]
@@ -602,7 +599,7 @@ def test_data_processing_pipeline(suite: TestSuite):
             result.add_error(f"Erro ao adicionar métricas de viagem: {str(e)}")
             df_with_metrics = df_with_temporal
         
-        # Teste 4: Aplicar filtros de qualidade
+        # Data quality filtering
         try:
             df_filtered, quality_report = apply_data_quality_filters(df_with_metrics)
             filtered_count = df_filtered.count()
@@ -617,21 +614,21 @@ def test_data_processing_pipeline(suite: TestSuite):
             result.add_error(f"Erro ao aplicar filtros de qualidade: {str(e)}")
             df_filtered = df_with_metrics
         
-        # Teste 5: Calcular métricas de qualidade
+        # Quality metrics calculation
         try:
             quality_metrics = calculate_data_quality_metrics(df_filtered)
             result.details["quality_metrics"] = quality_metrics
         except Exception as e:
             result.add_warning(f"Erro ao calcular métricas de qualidade: {str(e)}")
         
-        # Teste 6: Gerar estatísticas resumidas
+        # Summary statistics generation
         try:
             summary_stats = generate_summary_statistics(df_filtered)
             result.details["summary_statistics"] = summary_stats
         except Exception as e:
             result.add_warning(f"Erro ao gerar estatísticas: {str(e)}")
         
-        # Teste 7: Validar regras de negócio
+        # Business rules validation
         try:
             business_validation = validate_business_rules(df_filtered)
             result.details["business_rules"] = business_validation
@@ -880,7 +877,7 @@ def main():
         
         print()
         print("=" * 60)
-        print(" RESUMO DOS TESTES")
+        print("TEST EXECUTION SUMMARY")
         print("=" * 60)
         print(f"Total de testes: {summary['total_tests']}")
         print(f"Aprovados: {summary['passed']}")

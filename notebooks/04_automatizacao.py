@@ -43,7 +43,7 @@ logger = logging.getLogger(__name__)
 PIPELINE_CONFIG = {
     "pipeline_name": "nyc_yellow_trip_etl",
     "version": "1.0",
-    "author": "Data Engineering Team",
+    "created": "2025",
     "description": "Pipeline automatizado para processamento de NYC Yellow Trip Records",
     
     # Tabelas
